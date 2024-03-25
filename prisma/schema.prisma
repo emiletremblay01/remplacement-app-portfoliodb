@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("MONGO_URL")
+}
+
+model Remplacement {
+  id                      String   @id @default(auto()) @map("_id") @db.ObjectId
+  courrielEnvoye          DateTime[]    @default([])
+  dateDemande             DateTime @db.Date
+  dateQuart               DateTime @db.Date
+  heuresQuart             String
+  nomEquipier             String
+  nomEquipierRemplacant   String  @default("")
+  posteQuart  String
+  recuPar                 String  
+  remplacementEffectuePar String  @default("")
+  statut                  String @default("")
+}
